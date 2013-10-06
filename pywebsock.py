@@ -2,13 +2,14 @@
 
 """
 This was downloaded from https://pypi.python.org/pypi/websocket-client/0.7.0
+then modified
 LGPL license
 
 Run this to create a broadcast websocket.
 Any client that send()'s to it, will broadcast an echo to all listeners.
 """
 
-import socket, hashlib, base64, threading
+import socket, hashlib, base64, threading, sys
  
 class PyWSock:
     MAGIC = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
@@ -118,5 +119,10 @@ class PyWSock:
             self.clients.append(conn)
             self.LOCK.release()
  
-ws = PyWSock()
-ws.start_server(4545)
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print "No port number given!"
+        exit()
+    port = sys.argv[1]
+    ws = PyWSock()
+    ws.start_server(int(port))
