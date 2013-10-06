@@ -31,9 +31,9 @@
 				form = document.getElementById("form");
 		 		var s;
 				try {
-					var host = "ws://localhost:4545/";
+					var host = "ws://localhost:9000/";
 					if(window.location.hostname) {
-						host = "ws://" + window.location.hostname + ":4545/";
+						host = "ws://" + window.location.hostname + ":9000/";
 					}
 					
 					s = new WebSocket(host);
